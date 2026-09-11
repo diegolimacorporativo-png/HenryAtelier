@@ -1,0 +1,1 @@
+- [Supabase preview configuration](supabase-preview-secrets.md) — validate injected client URLs and keep a non-secret project URL fallback; never log secret values.

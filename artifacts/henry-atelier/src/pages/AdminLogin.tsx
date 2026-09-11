@@ -84,6 +84,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
               <input
                 id="admin-password"
                 type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
                 placeholder="Senha de acesso"

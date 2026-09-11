@@ -1,9 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
 
 const configuredSupabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const supabaseUrl = configuredSupabaseUrl && /^https?:\/\//i.test(configuredSupabaseUrl)
-  ? configuredSupabaseUrl
-  : "https://henry-atelier.invalid";
+const defaultSupabaseUrl = "https://ltpphuurnmjaolyfffhh.supabase.co";
+const supabaseUrl = (() => {
+  try {
+    const parsed = new URL(configuredSupabaseUrl ?? "");
+    return /^https?:$/i.test(parsed.protocol) && parsed.hostname.endsWith(".supabase.co")
+      ? parsed.toString().replace(/\/$/, "")
+      : defaultSupabaseUrl;
+  } catch {
+    return defaultSupabaseUrl;
+  }
+})();
 const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || "henry-atelier-preview";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
