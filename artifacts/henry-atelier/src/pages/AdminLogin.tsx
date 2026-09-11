@@ -22,10 +22,13 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
     }
     setLoading(true);
     const email = form.email.trim().toLowerCase();
+    const authEmail = email === "admin@henryatelier.com.br"
+      ? "admin@henryatelier.com"
+      : email;
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+        email: authEmail,
         password: form.password,
       });
 
@@ -72,7 +75,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
               autoComplete="username"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="admin@email.com"
+              placeholder="admin@henryatelier.com"
               className="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-white placeholder:text-stone-600 focus:outline-none focus:border-gold text-sm"
             />
           </div>
