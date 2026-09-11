@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@config "../tailwind.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 96%;
+    --foreground: 222 30% 16%;
+    --card: 38 36% 98%;
+    --card-foreground: 222 30% 16%;
+    --popover: 38 36% 98%;
+    --popover-foreground: 222 30% 16%;
+    --primary: 39 61% 44%;
+    --primary-foreground: 38 36% 98%;
+    --secondary: 38 22% 90%;
+    --secondary-foreground: 222 30% 16%;
+    --muted: 38 20% 91%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 206 29% 23%;
+    --accent-foreground: 38 36% 98%;
+    --destructive: 4 64% 46%;
+    --destructive-foreground: 38 36% 98%;
+    --border: 36 18% 84%;
+    --input: 36 18% 84%;
+    --ring: 39 61% 44%;
+    --radius: 0.35rem;
+  }
+
+  * { border-color: hsl(var(--border)); }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: #bd9650;
+    color: #fbfaf7;
+    padding: .75rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: .875rem;
+    transition: background-color .2s ease;
+  }
+
+  .btn-primary:hover { background-color: #9d773b; }
+
+  .btn-secondary {
+    border: 1px solid #242d3c;
+    color: #242d3c;
+    padding: .75rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: .875rem;
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  .btn-secondary:hover { background: #242d3c; color: #fbfaf7; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    color: #242d3c;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1rem;
+    color: #5e6470;
+    font-size: .875rem;
+    letter-spacing: .025em;
+    transition: color .15s ease, background-color .15s ease;
+  }
+
+  .sidebar-link:hover { color: #242d3c; background: #f5f3ef; }
+
+  .sidebar-link.active {
+    color: #242d3c;
+    background: #f5f3ef;
+    font-weight: 500;
+  }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #eeebe5; }
+::-webkit-scrollbar-thumb { background: #bd9650; border-radius: 3px; }
+
+.text-gold { color: #bd9650; }
+.bg-gold { background-color: #bd9650; }
+.border-gold { border-color: #bd9650; }
+.hover\:bg-gold-dark:hover { background-color: #9d773b; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 700ms cubic-bezier(.22,.61,.36,1) both;
+}

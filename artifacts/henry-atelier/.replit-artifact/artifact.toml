@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Henry Atelier"
+description = "A premium Portuguese-language artisan candle storefront with product browsing, cart, checkout, customer accounts, and an administration area."
+version = "1.0.0"
+id = "artifacts/henry-atelier"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21911
+
+[services.development]
+run = "pnpm --filter @workspace/henry-atelier run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/henry-atelier", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/henry-atelier/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21911"
+BASE_PATH = "/"
