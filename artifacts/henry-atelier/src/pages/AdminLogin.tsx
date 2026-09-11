@@ -69,6 +69,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
             <input
               id="admin-email"
               type="email"
+              autoComplete="username"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="admin@email.com"
@@ -84,7 +85,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
               <input
                 id="admin-password"
                 type={showPassword ? "text" : "password"}
-              autoComplete="current-password"
+                autoComplete="current-password"
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
                 placeholder="Senha de acesso"

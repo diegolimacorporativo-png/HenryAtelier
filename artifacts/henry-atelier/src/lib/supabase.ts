@@ -12,9 +12,11 @@ const supabaseUrl = (() => {
     return defaultSupabaseUrl;
   }
 })();
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || "henry-atelier-preview";
+const supabasePublishableKey =
+  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ||
+  "henry-atelier-preview";
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+export const supabase = createClient(supabaseUrl, supabasePublishableKey, {
   auth: {
     flowType: "pkce",
     persistSession: true,

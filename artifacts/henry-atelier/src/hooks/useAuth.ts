@@ -42,7 +42,7 @@ export function useAuth() {
   useEffect(() => {
     let mounted = true;
 
-    if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+    if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) {
       setLoading(false);
       return () => { mounted = false; };
     }
